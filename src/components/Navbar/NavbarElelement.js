@@ -1,84 +1,41 @@
 import styled from "styled-components";
-import { Link as LinkR } from "react-router-dom";
-import { Link as LinkS } from "react-scroll";
-import { device } from "../../common/device";
-export const Nav = styled.nav`
-  background: #000;
-  height: 80px;
+import { RiMovie2Line } from "react-icons/ri";
+export const Nav = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  @media ${device.laptop} {
-    transition: 0.8s all ease;
-  }
+  justify-content: left;
+  align-items: flex-start;
+  /* background: red; */
 `;
-export const NavbarContainer = styled.div`
+export const NavLogo = styled.div`
   display: flex;
-  justify-content: space-between;
-  height: 80px;
-  z-index: 1;
-  width: 100%;
-  padding: 0 24px;
-  max-width: 1100px;
+  justify-content: left;
+  align-items: flex-start;
+  width: 30%;
 `;
-export const NavLogo = styled(LinkR)`
-  color: #fff;
-  justify-self: flex-start;
+export const Logo = styled(RiMovie2Line)`
+  color: #d6413a;
+  font-size: 1.875rem;
+`;
+export const Content = styled.p`
+  margin-top: 5px;
+`;
+export const NavList = styled.div`
+  width: 70%;
   display: flex;
-  cursor: pointer;
-  font-size: 1.5rem;
+  justify-content: left;
   align-items: center;
-  margin-left: 24px;
-  font-weight: bold;
+  overflow: hidden;
+`;
+export const NavItem = styled.a`
+  display: block;
   text-decoration: none;
-`;
-export const MobileIcon = styled.div`
-  display: none;
-  @media ${device.tablet} {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100%, 60%);
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: #fff;
-  }
-`;
-export const NavMenu = styled.ul`
-  display: flex;
-  align-items: center;
-  list-style: none;
+  margin-right: 1rem;
   text-align: center;
-  margin-right: -22px;
-  margin-top: none !important;
-  @media ${device.tablet} {
-    display: none;
-  }
-`;
-export const NavItem = styled.li`
-  height: 80px;
-`;
-export const NavLinks = styled(LinkS)`
-  color: #fff;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  padding: 0 1rem;
-  height: 100%;
-  cursor: pointer;
-  &:active {
-    border-bottom: 3px solid #01bf71;
-  }
-`;
-export const NavBtn = styled.nav`
-  display: flex;
-  align-items: center;
-  @media ${device.tablet} {
-    display: none;
+  color: ${({ theme }) => theme.c.primary};
+  opacity: 0.7;
+  &:hover {
+    border-bottom: 2px solid #d6413a;
+    color: ${({ theme }) => theme.c.primary} !important;
+    opacity: 1;
   }
 `;

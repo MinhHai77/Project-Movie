@@ -1,41 +1,61 @@
-import React from "react";
-import Carousel from "react-bootstrap/Carousel";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import ModelVideo from "~/components/modals/ModelVideo";
+import {
+  ContainerArrow,
+  ArrowLeft,
+  ArrowRight,
+  ContainerCarouse,
+  CardImg,
+  ArrowPlay,
+  ContainerModal,
+} from "./Carouse";
+const Carouse = ({ theme }) => {
+  const { bannerImage } = useSelector((state) => state.ban);
+  const [current, setCurrent] = useState(1);
+  const [showModal, setShowModal] = useState(false);
+  const length = bannerImage.length;
+  if (length === 0) return;
 
-import HeroSection from "../HeroSection";
-import { Container } from "./Carouse";
-const Carouse = () => {
-  const { bannerImage, trailer } = useSelector((state) => state.ban);
-  if (bannerImage.length === 0) return;
+  const nextSlide = () => {
+    setCurrent(current === length ? 1 : current + 1);
+  };
+  const prevSlide = () => {
+    setCurrent(current === 1 ? length : current - 1);
+  };
   return (
-    <Container>
-      <Carousel variant="dark">
-        <Carousel.Item>
-          <img
-            className="d-block w-100 "
-            src={bannerImage[0].hinhAnh}
-            alt="First slide"
-          />
-          <HeroSection trailer={trailer[0]} />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src={bannerImage[1].hinhAnh}
-            alt="Second slide"
-          />
-          <HeroSection trailer={trailer[1]} />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src={bannerImage[2].hinhAnh}
-            alt="Third slide"
-          />
-          <HeroSection trailer={trailer[2]} />
-        </Carousel.Item>
-      </Carousel>
-    </Container>
+    <>
+      <ContainerCarouse>
+        {bannerImage.map((slide, index) => {
+          return (
+            <ContainerModal key={index}>
+              <>
+                <CardImg active={index + 1 === current ? true : false}>
+                  {index + 1 === current && (
+                    <img src={slide.hinhAnh} alt={slide.maPhim} />
+                  )}
+                  ;
+                </CardImg>
+                {index + 1 === current && (
+                  <ModelVideo
+                    showModal={showModal}
+                    trailer={slide.trailer}
+                    setShowModal={setShowModal}
+                  />
+                )}
+              </>
+            </ContainerModal>
+          );
+        })}
+        {!showModal ? (
+          <ContainerArrow>
+            <ArrowLeft onClick={prevSlide} />
+            <ArrowPlay onClick={() => setShowModal(true)} />
+            <ArrowRight onClick={nextSlide} />
+          </ContainerArrow>
+        ) : null}
+      </ContainerCarouse>
+    </>
   );
 };
 

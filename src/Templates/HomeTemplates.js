@@ -1,25 +1,16 @@
 import { Outlet } from "react-router-dom";
 
-import React, { useEffect } from "react";
-import Sidebar from "../components/Sidebar";
-import Navbar from "../components/Navbar";
-import Carouse from "../Page/Carouse";
-import { getMovieBanner, getTrailerBanner } from "../reducers/banner";
-import { useDispatch } from "react-redux";
-import Index from "../Page/test";
+import { ThemeProvider } from "styled-components";
+import { theme } from "../GlobalStyles";
+import HomePage from "~/Page/HomePage";
+import Footer from "~/Page/Footer";
 const HomeTemplates = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getMovieBanner());
-    dispatch(getTrailerBanner());
-  }, []);
   return (
-    <div>
-      <Sidebar />
-      <Navbar />
-      <Carouse />
+    <ThemeProvider theme={theme}>
+      <HomePage />
+      <Footer />
       <Outlet />
-    </div>
+    </ThemeProvider>
   );
 };
 

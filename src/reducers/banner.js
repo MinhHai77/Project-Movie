@@ -26,7 +26,6 @@ export const getTrailerBanner = createAsyncThunk(
   async () => {
     try {
       const data = await movieAPI.getMovieDetail(1283);
-      console.log(data);
       return data;
     } catch (error) {
       throw error.data;
@@ -43,7 +42,6 @@ const bannerSlice = createSlice({
         return { ...item, trailer: state.trailer[index] };
       });
       state.bannerImage = data;
-      console.log(state.bannerImage);
     },
   },
 });

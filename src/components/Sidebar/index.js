@@ -1,48 +1,48 @@
 import React from "react";
-import {
-  SidebarContainer,
-  Icon,
-  CloseIcon,
-  SideBtnWrap,
-  SidebarLink,
-  SidebarWrapper,
-  SidebarMenu,
-} from "./SidebarElement";
-import { SidebarRoute } from "../Button/Button";
-import { useDispatch, useSelector } from "react-redux";
-import { openNav } from "../../reducers/navbar";
-
-const Sidebar = () => {
-  const { navbar } = useSelector((state) => state);
-  const dispatch = useDispatch();
-  const openSidebar = () => {
-    dispatch(openNav());
-  };
+import { AiOutlineHome, AiOutlineClockCircle } from "react-icons/ai";
+import { RiCommunityFill, RiCompassDiscoverLine } from "react-icons/ri";
+import { SideMenu, SideList, SideLogo, SideItem } from "./SidebarElement";
+const Sidebar = ({ theme }) => {
   return (
-    <SidebarContainer isOpen={navbar}>
-      <Icon onClick={openSidebar}>
-        <CloseIcon />
-      </Icon>
-      <SidebarWrapper>
-        <SidebarMenu>
-          <SidebarLink to="showtimes" onClick={openSidebar}>
-            Show Time
-          </SidebarLink>
-          <SidebarLink to="Cluster" onClick={openSidebar}>
-            Cluster Of Theaters
-          </SidebarLink>
-          <SidebarLink to="news" onClick={openSidebar}>
-            News
-          </SidebarLink>
-          <SidebarLink to="app" onClick={openSidebar}>
-            Application
-          </SidebarLink>
-        </SidebarMenu>
-        <SideBtnWrap>
-          <SidebarRoute to="/signin">Sign In</SidebarRoute>
-        </SideBtnWrap>
-      </SidebarWrapper>
-    </SidebarContainer>
+    <>
+      <SideMenu>
+        <p>Menu</p>
+        <SideList>
+          <SideItem>
+            <SideLogo>
+              <AiOutlineHome />
+            </SideLogo>
+            <a href="#">
+              <p>Home</p>
+            </a>
+          </SideItem>
+          <SideItem>
+            <SideLogo>
+              <RiCommunityFill />
+            </SideLogo>
+            <a href="#">
+              <p>Community</p>
+            </a>
+          </SideItem>
+          <SideItem>
+            <SideLogo>
+              <RiCompassDiscoverLine />
+            </SideLogo>
+            <a href="#">
+              <p>Discovery</p>
+            </a>
+          </SideItem>
+          <SideItem>
+            <SideLogo>
+              <AiOutlineClockCircle />
+            </SideLogo>
+            <a href="#">
+              <p>Coming soon</p>
+            </a>
+          </SideItem>
+        </SideList>
+      </SideMenu>
+    </>
   );
 };
 
