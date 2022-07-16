@@ -35,7 +35,6 @@ const Carouse = ({ theme }) => {
                   {index + 1 === current && (
                     <Image linkImage={slide.hinhAnh} descImage={slide.maPhim} />
                   )}
-                  ;
                 </CardImg>
                 {index + 1 === current && (
                   <ModelVideo

@@ -17,13 +17,13 @@ export const ContainerArrow = styled.div`
   width: 100%;
 `;
 export const CardImg = styled.div`
-  height: 31.25rem;
+  height: 100%;
   ${(props) =>
     props.active
       ? `opacity: 1;
   transition-duration: 0.4s;
  ;`
-      : ` display:none; opacity: 0;
+      : ` opacity: 0;
   transition-duration: 0.5s ease;`}
 `;
 export const Image = styled.img.attrs((props) => ({
@@ -31,7 +31,9 @@ export const Image = styled.img.attrs((props) => ({
   alt: props.descImage,
 }))`
   width: 100%;
-  height: 100%;
+  height: 31.25rem;
+
+  border-radius: 10px;
   object-fit: cover;
 `;
 export const ArrowLeft = styled(BsArrowLeftCircle)`
