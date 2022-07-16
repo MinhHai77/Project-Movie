@@ -17,18 +17,22 @@ export const ContainerArrow = styled.div`
   width: 100%;
 `;
 export const CardImg = styled.div`
-  img {
-    width: 100%;
-    height: 31.25rem;
-    border-radius: 10px;
-  }
+  height: 31.25rem;
   ${(props) =>
     props.active
       ? `opacity: 1;
   transition-duration: 0.4s;
  ;`
-      : ` opacity: 0;
+      : ` display:none; opacity: 0;
   transition-duration: 0.5s ease;`}
+`;
+export const Image = styled.img.attrs((props) => ({
+  src: props.linkImage,
+  alt: props.descImage,
+}))`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 export const ArrowLeft = styled(BsArrowLeftCircle)`
   font-size: 2rem;
@@ -58,4 +62,7 @@ export const ArrowPlay = styled(AiOutlinePlayCircle)`
     opacity: 1;
   }
 `;
-export const ContainerModal = styled.div``;
+export const ContainerModal = styled.div`
+  width: 100%;
+  height: 100%;
+`;

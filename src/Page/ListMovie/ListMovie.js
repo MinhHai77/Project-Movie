@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const RowMovie = styled.div`
+  margin-top: 6.25rem;
   display: flex;
   justify-content: left;
   align-items: center;
